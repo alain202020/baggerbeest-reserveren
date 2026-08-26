@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bar Baggerbeest | Reserveer een tafel</title>
+  <meta name="description" content="Reserveer een tafel bij Bar Baggerbeest op het Zeeburgereiland in Amsterdam.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#193b37; --forest:#174f46; --mint:#dcebe2; --cream:#f7f4ed; --orange:#e87543; --line:#d8ded6; --white:#fffdf8; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--cream); font-family:"DM Sans", sans-serif; }
+    h1,h2,h3,p { margin:0; }
+    h1,h2 { font-family:Fraunces, serif; font-weight:600; letter-spacing:0; }
+    button,input { font:inherit; }
+    .wrap { max-width:1180px; margin:auto; padding:0 28px; }
+    header { position:absolute; z-index:2; top:0; left:0; right:0; color:white; }
+    .nav { height:88px; display:flex; justify-content:space-between; align-items:center; }
+    .logo { color:inherit; text-decoration:none; font-family:Fraunces,serif; font-size:28px; font-weight:700; }
+    .logo span { color:#f4bb72; }
+    nav { display:flex; align-items:center; gap:30px; font-size:14px; font-weight:600; }
+    nav a { color:inherit; text-decoration:none; }
+    .nav-cta { border:1px solid rgba(255,255,255,.55); border-radius:99px; padding:11px 18px; }
+    .hero { min-height:670px; color:white; position:relative; display:flex; align-items:center; overflow:hidden; background:linear-gradient(90deg,rgba(12,44,38,.78),rgba(12,44,38,.1)),url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2000&q=85") center/cover; }
+    .hero::after { content:""; position:absolute; right:0; bottom:-1px; left:0; height:70px; background:var(--cream); clip-path:polygon(0 70%,18% 25%,35% 57%,52% 8%,70% 48%,86% 16%,100% 55%,100% 100%,0 100%); }
+    .hero-content { padding-top:60px; max-width:680px; position:relative; z-index:1; }
+    .eyebrow { color:#f8ca8c; text-transform:uppercase; letter-spacing:2px; font-size:12px; font-weight:700; margin-bottom:18px; }
+    .hero h1 { font-size:clamp(48px,7vw,82px); line-height:.98; max-width:650px; }
+    .hero p { margin-top:24px; max-width:450px; font-size:18px; line-height:1.6; color:#eef2ea; }
+    .booking { position:relative; z-index:3; margin-top:-43px; }
+    .booking-box { display:grid; grid-template-columns:1fr 1fr 1fr auto; background:var(--white); border:1px solid var(--line); box-shadow:0 18px 50px rgba(24,52,44,.12); border-radius:8px; padding:10px; }
+    .field { display:flex; flex-direction:column; gap:5px; padding:12px 20px; border-right:1px solid var(--line); }
+    .field label { color:#60736b; text-transform:uppercase; font-size:10px; letter-spacing:1px; font-weight:700; }
+    .field input { background:transparent; color:var(--ink); border:0; outline:0; font-size:16px; font-weight:600; width:100%; }
+    .primary { border:0; cursor:pointer; border-radius:5px; padding:0 25px; color:white; background:var(--orange); font-weight:700; transition:background .2s,transform .2s; }
+    .primary:hover { background:#cf5e31; transform:translateY(-1px); }
+    .intro { padding:120px 0 92px; display:grid; grid-template-columns:1fr 1.2fr; gap:100px; align-items:center; }
+    .intro h2 { font-size:48px; line-height:1.08; }
+    .intro-copy p { color:#557068; line-height:1.75; max-width:500px; margin-bottom:22px; }
+    .text-link { color:var(--orange); text-decoration:none; font-weight:700; }
+    .intro-image { height:385px; border-radius:5px; background:url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85") center/cover; position:relative; }
+    .stamp { position:absolute; right:-28px; bottom:-25px; width:120px; height:120px; display:grid; place-items:center; text-align:center; border-radius:50%; background:#f4bb72; color:var(--ink); font-size:13px; font-weight:700; transform:rotate(10deg); }
+    .stay { background:var(--mint); padding:96px 0; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; margin-bottom:35px; }
+    .section-head h2 { font-size:45px; }
+    .section-head p { color:#557068; }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .card { background:var(--white); border-radius:5px; overflow:hidden; }
+    .card-image { height:220px; background:center/cover; }
+    .card:nth-child(1) .card-image { background-image:url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85"); }
+    .card:nth-child(2) .card-image { background-image:url("https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=900&q=85"); }
+    .card:nth-child(3) .card-image { background-image:url("https://images.unsplash.com/photo-1520984032042-162d526883e0?auto=format&fit=crop&w=900&q=85"); }
+    .card-body { padding:22px; }
+    .card-body h3 { font-family:Fraunces,serif; font-size:25px; margin-bottom:8px; }
+    .card-body p { color:#60736b; font-size:14px; line-height:1.55; }
+    .card-meta { display:flex; justify-content:space-between; margin-top:19px; padding-top:15px; border-top:1px solid var(--line); font-size:13px; font-weight:700; }
+    .card-meta span:last-child { color:var(--orange); }
+    .quote { padding:120px 20px; text-align:center; background:var(--forest); color:white; }
+    blockquote { max-width:800px; margin:0 auto; font:600 clamp(28px,4vw,48px)/1.2 Fraunces,serif; }
+    .quote cite { display:block; margin-top:25px; color:#b9d3c6; font-size:13px; font-style:normal; letter-spacing:1px; text-transform:uppercase; }
+    footer { padding:46px 0; background:#123c36; color:#b9d3c6; font-size:13px; }
+    .footer-row { display:flex; justify-content:space-between; gap:25px; }
+    .footer-row .logo { color:white; }
+    .notice { position:fixed; right:22px; bottom:22px; z-index:5; background:var(--ink); color:white; padding:17px 20px; border-radius:5px; box-shadow:0 8px 30px #18342c33; transform:translateY(130px); transition:transform .3s; font-size:14px; }
+    .notice.show { transform:translateY(0); }
+    @media (max-width:750px) {
+      .wrap { padding:0 20px; } nav a:not(.nav-cta) { display:none; } .nav { height:72px; }
+      .hero { min-height:640px; } .hero-content { padding-top:40px; } .hero p { font-size:16px; }
+      .booking { margin-top:-30px; } .booking-box { grid-template-columns:1fr 1fr; } .field { padding:12px; } .field:nth-child(2) { border-right:0; } .field:nth-child(-n+2) { border-bottom:1px solid var(--line); } .primary { min-height:56px; grid-column:1/-1; margin-top:8px; }
+      .intro { padding:85px 0 75px; display:block; } .intro h2 { font-size:40px; margin-bottom:25px; } .intro-image { height:300px; margin-top:35px; } .stamp { right:-10px; }
+      .stay { padding:75px 0; } .section-head { display:block; } .section-head h2 { font-size:40px; margin-bottom:12px; } .cards { grid-template-columns:1fr; }
+      .card-image { height:200px; } .quote { padding:85px 20px; } .footer-row { display:block; } footer .logo { display:block; margin-bottom:18px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="#top">bar <span>baggerbeest</span></a>
+      <nav aria-label="Hoofdnavigatie"><a href="#verhaal">Ons verhaal</a><a href="#menu">Pizza & drank</a><a class="nav-cta" href="#reserveren">Reserveer</a></nav>
+    </div>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-content"><div class="eyebrow">Bar · pizza · podium · club</div><h1>De buurt begint hier.</h1><p>Een bar aan het water op Zeeburgereiland. Voor pizza's, goede muziek, lange avonden en alles wat daar tussendoor gebeurt.</p></div>
+    </section>
+    <section class="booking wrap" id="reserveren" aria-label="Reserveren">
+      <form class="booking-box" id="booking-form">
+        <div class="field"><label for="arrival">Datum</label><input id="arrival" type="date" required></div>
+        <div class="field"><label for="time">Tijd</label><input id="time" type="time" min="14:00" max="22:00" value="19:00" required></div>
+        <div class="field"><label for="guests">Aantal personen</label><input id="guests" type="number" min="1" max="8" value="2" required></div>
+        <button class="primary" type="submit">Bekijk tafels</button>
+      </form>
+    </section>
+    <section class="wrap intro" id="verhaal"><div class="intro-copy"><h2>Geen restaurant. Wel een goede avond.</h2><p>Bar Baggerbeest is de plek waar Zeeburgereiland samenkomt. Eet een pizza, pak een biertje, dans mee met een band of blijf hangen tot de laatste plaat.</p><a class="text-link" href="#menu">Bekijk wat er op tafel komt&nbsp; →</a></div><div class="intro-image" role="img" aria-label="Sfeervolle plek in de stad"><div class="stamp">open<br>vanaf 14:00</div></div></section>
+    <section class="stay" id="menu"><div class="wrap"><div class="section-head"><div><div class="eyebrow" style="color:var(--orange)">Op tafel & op het podium</div><h2>Kom zoals je bent.</h2></div><p>Dinsdag t/m zondag<br>Keuken tot 21:00</p></div><div class="cards">
+      <article class="card"><div class="card-image"></div><div class="card-body"><h3>Pizza uit de oven</h3><p>Knapperige bodems, wilde combinaties en genoeg om te delen met de hele tafel.</p><div class="card-meta"><span>Streetfood</span><span>vanaf € 11,50</span></div></div></article>
+      <article class="card"><div class="card-image"></div><div class="card-body"><h3>Bar aan het water</h3><p>Lokale bieren, natuurwijn en fris dat koud staat. Ook zonder reservering welkom.</p><div class="card-meta"><span>Drank & borrel</span><span>vanaf 14:00</span></div></div></article>
+      <article class="card"><div class="card-image"></div><div class="card-body"><h3>Podium & club</h3><p>Vrijdag, zaterdag en zondag na 21:00: live, luid en soms een privéfeest.</p><div class="card-meta"><span>Programma</span><span>na 21:00</span></div></div></article>
+    </div></div></section>
+    <section class="quote"><blockquote>“Een beetje rauw, heel gastvrij en precies de juiste hoeveelheid chaos.”</blockquote><cite>Bar Baggerbeest · Zeeburgereiland</cite></section>
+  </main>
+  <footer><div class="wrap footer-row"><a class="logo" href="#top">bar <span>baggerbeest</span></a><div>Rudi van Dantzigstraat 1 · 1095 PK Amsterdam</div><div>proost@barbaggerbeest.nl · 020 - 308 00 13</div></div></footer>
+  <div class="notice" id="notice" role="status"></div>
+  <script>
+    const arrival = document.querySelector('#arrival');
+    const today = new Date().toISOString().split('T')[0];
+    arrival.min = today;
+    document.querySelector('#booking-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const notice = document.querySelector('#notice');
+      const guests = Number(document.querySelector('#guests').value);
+      notice.textContent = guests >= 9 ? 'Voor groepen vanaf 9 personen maken we graag een voorstel op maat.' : 'We zoeken een tafel voor je uit...';
+      notice.classList.add('show');
+      window.setTimeout(() => { notice.textContent = 'Mooi! Deze data lijken beschikbaar. We nemen je mee naar de boeking.'; }, 1100);
+      window.setTimeout(() => notice.classList.remove('show'), 4300);
+    });
+  </script>
+</body>
+</html>
